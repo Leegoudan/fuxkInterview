@@ -33,7 +33,7 @@ p = p1; //error, p1 read/write
 硕大分析过，理论上保证倒插元素的时候，时间复杂度为O(n)，实际上并没有什么卵用。
 
 5. 为什么 header 要有 color 成员，并且固定是红色？
-区别于根节点(根节点一定是黑的)。当rb_tree是空时，即只有一个header数据时，可以用(node_->color_ == kRed && node_->parent_->parent_ == node_) 判断。只有node_->parent_->parent_ == node_的话无法区分是不是根节点。 
+区别于根节点(根节点一定是黑的)。当rb_tree是空时，即只有一个header数据时，可以用(node_->color_ == kRed && node_->parent_->parent_ == node_) 判断。只有node_->parent_->parent_ == node_的话无法区分是有根节点还是只有header。 
 
 6. 为什么要分为 rb_tree_node 和 rb_tree_node_base 两层结构，引入 node 基类的目的是什么？
 解耦：把树的操作从节点类分离开来，减少模板展开引起的代码膨胀(rb_tree_node已经需要传入具体元素类型)。同时因为分离出来，iterator可以直接使用base指针来进行树的操作。
