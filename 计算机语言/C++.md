@@ -17,7 +17,7 @@ p = p1; //error, p1 read/write
 ```
 智能指针保证了引用计数是**原子操作**，然而对同一个shared_ptr指向的对象进行读写不是线程安全的。因为shared_ptr对对象读写操作大致分为两步：原始指针读写和引用计数读写，这两步并没有原子化。
 
-#2 红黑树(stl的map,set,multi_map, multi_set底层实现)
+# 2. 红黑树(stl的map,set,multi_map, multi_set底层实现)
 
 *（问题来源：http://www.cppblog.com/Solstice/archive/2013/01/20/197422.html）*
 1. 为什么 rb_tree 没有包含 allocator 成员？
